@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hüso</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: white;
+    background: linear-gradient(-45deg, #1e3c72, #2a5298, #6a11cb, #2575fc);
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite, fadeIn 2s ease;
+}
+
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+h1 {
+    font-size: 60px;
+    margin-top: 40px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.card {
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.card img {
+    width: 220px;
+    height: 220px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.6);
+    transition: 0.4s;
+}
+
+.card:hover {
+    transform: scale(1.1);
+}
+
+.glow {
+    box-shadow: 0 0 30px #00ffea, 0 0 60px #00ffea;
+}
+
+.name {
+    margin-top: 15px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.ozel-btn {
+    margin-top: 60px;
+    padding: 15px 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 30px;
+    background: #ff0066;
+    color: white;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.ozel-btn:hover {
+    background: #ff3385;
+    transform: scale(1.1);
+}
+</style>
+</head>
+
+<body>
+
+<h1>Hüso</h1>
+
+<div class="container">
+
+    <div class="card" onclick="playMusic(this,'huso.mp3')">
+        <img src="huso.png">
+        <div class="name">Hüso</div>
+    </div>
+
+    <div class="card" onclick="playMusic(this,'helin.mp3')">
+        <img src="helin.png">
+        <div class="name">Helin</div>
+    </div>
+
+    <div class="card" onclick="playMusic(this,'gulce.mp3')">
+        <img src="gulce.png">
+        <div class="name">Gülce</div>
+    </div>
+
+    <div class="card" onclick="playMusic(this,'irem.mp3')">
+        <img src="irem.png">
+        <div class="name">İrem</div>
+    </div>
+
+</div>
+
+<button class="ozel-btn" onclick="window.location.href='ozel.html'">
+Özel Alan ❤️
+</button>
+
+<audio id="audioPlayer"></audio>
+
+<script>
+let audio = document.getElementById("audioPlayer");
+
+function playMusic(card,file) {
+
+    document.querySelectorAll(".card img").forEach(img=>{
+        img.classList.remove("glow");
+    });
+
+    card.querySelector("img").classList.add("glow");
+
+    audio.pause();
+    audio.src = file;
+    audio.play();
+}
+</script>
+
+</body>
+</html>
